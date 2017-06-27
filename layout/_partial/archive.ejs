@@ -2,21 +2,27 @@
 <div style="padding-top: 70px">
   <div class="col-md-2"></div>
   <div class="container center-block">
-        <div class="col-md-8 col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Blog</h3>
-                </div>
-                <ul class="list-group">
-                    <% if (pagination == 2){ %>
-                    <% page.posts.each(function(post){ %>
-                    <%- partial('article', {post: post, index: true}) %>
-                    <% }) %>
-                    <% } %>
-                </ul>
-            </div>
+    <div class="col-md-8 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><% if (is_home()) { %>
+            <%= 'Blog' %>
+            <% } else if (is_category()) { %>
+            <%= 'Category - ' + page.category %>
+            <% } %></h3>
         </div>
-        <%- partial('_widget/category')%>
+        <ul class="list-group">
+          <% if (pagination == 2){ %>
+          <% page.posts.each(function(post){ %>
+          <%- partial('article', {post: post, index: true}) %>
+          <% }) %>
+          <% } %>
+        </ul>
+      </div>
     </div>
-    <div class="col-md-2"></div>
+    <%if(is_home()){%>
+    <%- partial('_widget/category')%>
+    <%}%>
+  </div>
+  <div class="col-md-2"></div>
 </div>
