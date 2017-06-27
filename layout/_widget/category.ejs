@@ -1,0 +1,12 @@
+<% if (site.categories.length){ %>
+  <div class="panel panel-default widget">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= __('Categories') %></h3>
+    </div>
+    <div class="list-group">
+      <%- list_categories({
+          show_count: theme.show_count
+      }) %>
+    </div>
+  </div>
+<% } %>
